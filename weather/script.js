@@ -123,20 +123,44 @@ function dayOfTheWeek(day, month, year) {
     return weekday[new Date(`${year}-${month}-${day}`).getDay()];
 };
 
-// function that fetches and displays the data from the weather API
+
+
 function fetchWeatherData() {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            // add temperature and weather condition to the page
-            temp.innerHTML = `${data.main.temp} &#176;C`; // Assuming temperature is in Celsius
+
+            // Convert temperature to Celsius
+            const temperatureCelsius = (data.main.temp - 273.15).toFixed(2);
+
+            // Update temperature, condition, and icon
+            temp.innerHTML = `${temperatureCelsius} &#176;C`;
             conditionOutput.innerHTML = data.weather[0].description;
+            icon.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+            nameOutput.innerHTML = data.name;
+            // Update date and time
+            const date = new Date(data.dt * 1000);
+            dateOutput.innerHTML = `${dayOfTheWeek(date.getUTCDate(), date.getUTCMonth() + 1, date.getUTCFullYear())} ${date.getUTCDate()} ${new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date)}`;
+
+            const hours = date.getUTCHours().toString().padStart(2, '0');
+            const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+            timeOutput.innerHTML = `${hours}:${minutes}`;
+
+            // Update other weather details
+            cloudOutput.innerHTML = `${data.clouds.all}%`;
+            humidityOutput.innerHTML = `${data.main.humidity}%`;
+            windOutput.innerHTML = `${data.wind.speed} m/s`;
+
+            // Update app visibility
+            app.style.opacity = "1";
         })
         .catch(error => {
             console.error('Error fetching weather data:', error);
         });
 }
+
+
 
 // call the function when the page loads
 fetchWeatherData();
