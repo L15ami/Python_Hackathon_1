@@ -13,6 +13,16 @@ h1, h3 {
     font-weight: 400;
 }
 
+.background {
+    margin: 0;
+    font-family: 'Heebo', sans-serif;
+    font-family: 'Lora', serif;
+    font-family: 'Rubik', sans-serif;
+    background: #111;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Add this line to make the background cover the entire screen */
+}
 .content {
     display: flex;
     flex-direction: column;
@@ -46,7 +56,7 @@ h1, h3 {
 
 .weather-app {
     min-height: 100vh;
-    background-image: url(./images/night/bg.jpg);
+    /* background-image: url(./images/night/bg.jpg); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

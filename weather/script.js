@@ -140,7 +140,7 @@ function fetchWeatherData() {
             icon.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
             nameOutput.innerHTML = data.name;
             // Update date and time
-            const date = new Date(data.dt * 1000);
+            const date = new Date((data.dt + data.timezone) * 1000);
             dateOutput.innerHTML = `${dayOfTheWeek(date.getUTCDate(), date.getUTCMonth() + 1, date.getUTCFullYear())} ${date.getUTCDate()} ${new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date)}`;
 
             const hours = date.getUTCHours().toString().padStart(2, '0');
@@ -150,23 +150,39 @@ function fetchWeatherData() {
 
                 // Get the weather condition and time of day
     const weatherCondition = data.weather[0].main.toLowerCase();
+
     const isDay = date.getUTCHours() >= 6 && date.getUTCHours() < 18;
 
-    // Determine the background image based on weather and time of day
-    let backgroundImage;
-    if (weatherCondition === 'clear' && isDay) {
-        backgroundImage = 'url(./images/day/clear.jpg)';
-    } else if (weatherCondition === 'clear' && !isDay) {
-        backgroundImage = 'url(./images/night/clear.jpg)';
-    } else if (weatherCondition === 'rain') {
-        backgroundImage = 'url(./images/rain.jpg)';
-    } else {
-        // Default background image if no specific condition is matched
-        backgroundImage = 'url(./images/default.jpg)';
-    }
+    console.log('Weather Condition:', weatherCondition);
+    console.log('Is Day:', isDay);
 
-    // Set the background image
-    document.body.style.backgroundImage = backgroundImage;
+     // Determine the background image based on weather and time of day
+     let backgroundImage;
+     if (weatherCondition === 'clear' && isDay) {
+         backgroundImage = 'url(./images/day/sunny.jpg)';
+     } else if (weatherCondition === 'clouds' && isDay) {
+         backgroundImage = 'url(./images/day/cloudy.jpg)';
+     } else if (weatherCondition === 'rain') {
+         backgroundImage = 'url(./images/rainy.jpg)';
+     } else if (weatherCondition === 'snow') {
+         backgroundImage = 'url(./images/snow.jpg)';
+     } else if (weatherCondition === 'clear' && !isDay) {
+         backgroundImage = 'url(./images/night/clear.jpg)';
+     } else if (weatherCondition === 'clouds' && !isDay) {
+         backgroundImage = 'url(./images/night/cloudy.jpg)';
+     } else if (weatherCondition === 'rain') {
+         backgroundImage = 'url(./images/night/rain.jpg)';
+     } else if (weatherCondition === 'snow') {
+         backgroundImage = 'url(./images/night/snow.jpg)';
+     } else {
+         // Default background image if no specific condition is matched
+         backgroundImage = 'url(./images/night/bg.jpg)';
+     }
+ 
+     // Set the background image
+     document.body.style.backgroundImage = backgroundImage;
+
+  
 
 
             // Update other weather details
