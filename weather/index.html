@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&family=Lora:wght@400;600&family=Noto+Serif:ital,wght@1,600&family=Rubik:ital@1&display=swap" rel="stylesheet">
+    <title>Weather</title>
+</head>
+<body>
+    <div class="weather-app">
+        <div class="container">
+            <div class="content">
+                <h1 class="logo">Weather<span class="hub">Hub</span></h1>
+                <p class="slogan">Stay prepared with WeatherHub, your reliable source for accurate and real-time weather forecasts. We provide the information you need, so you can confidently navigate any weather condition. Trust WeatherHub for personalized and dependable weather updates.</p>
+            </div>
+            <div>
+                <h1 class="temp">16 &#176;</h1>
+                <div class="city-name">
+                    <h1 class="name">London</h1>
+                    <small>
+                        <span class="time">06:09</span>
+                        <span class="date">Monday Sep 19</span>
+                    </small>
+                </div>
+                <div class="weather">
+                    <img 
+                    class="icon"
+                    src="sun.png"
+                    alt="icon"
+                    width="50"
+                    height="50" 
+                />
+                <span class="condition">Cloudy</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <form id="location-input"> 
+                <input 
+                class="search"
+                type="text"
+                placeholder="Search Location....."
+                />
+                <button type="submit" class="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+            <ul class="cities">
+                <li class="city">New York</li>
+                <li class="city">California</li>
+                <li class="city">Paris</li>
+                <li class="city">Tokyo</li>
+            </ul>
+            <ul class="details">
+                <h4>Weather Details</h4>
+                <li>
+                    <span>Cloudy</span>
+                    <span class="cloud">89%</span>
+                </li>
+                <li>
+                    <span>Humidity</span>
+                    <span class="humidity">64%</span>
+                </li>
+                <li>
+                    <span>Wind</span>
+                    <span class="wind">8km/h</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
