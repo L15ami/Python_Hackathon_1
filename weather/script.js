@@ -17,7 +17,7 @@ const apiKey = "1cf797c92f47eac76103910f1342e808";
 let cityInput = "London";
 
 // add click event to each city in the panel
-cities.forEach((city) => {
+ities.forEach((city) => {
     city.addEventListener('click', (e) => {
         // change from the default city to the clicked one
         cityInput = e.target.textContent;
