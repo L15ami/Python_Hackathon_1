@@ -147,6 +147,28 @@ function fetchWeatherData() {
             const minutes = date.getUTCMinutes().toString().padStart(2, '0');
             timeOutput.innerHTML = `${hours}:${minutes}`;
 
+
+                // Get the weather condition and time of day
+    const weatherCondition = data.weather[0].main.toLowerCase();
+    const isDay = date.getUTCHours() >= 6 && date.getUTCHours() < 18;
+
+    // Determine the background image based on weather and time of day
+    let backgroundImage;
+    if (weatherCondition === 'clear' && isDay) {
+        backgroundImage = 'url(./images/day/clear.jpg)';
+    } else if (weatherCondition === 'clear' && !isDay) {
+        backgroundImage = 'url(./images/night/clear.jpg)';
+    } else if (weatherCondition === 'rain') {
+        backgroundImage = 'url(./images/rain.jpg)';
+    } else {
+        // Default background image if no specific condition is matched
+        backgroundImage = 'url(./images/default.jpg)';
+    }
+
+    // Set the background image
+    document.body.style.backgroundImage = backgroundImage;
+
+
             // Update other weather details
             cloudOutput.innerHTML = `${data.clouds.all}%`;
             humidityOutput.innerHTML = `${data.main.humidity}%`;
